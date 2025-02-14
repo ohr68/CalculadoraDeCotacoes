@@ -16,4 +16,8 @@
       <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\CalculadoraDeCotacoes.Domain\CalculadoraDeCotacoes.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

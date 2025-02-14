@@ -12,4 +12,6 @@ public class Cotacao
     public virtual Produto? Produto { get; set; }
     public virtual Parceiro? Parceiro { get; set; }
     public virtual Segurado? Segurado { get; set; }
+    public virtual ICollection<CotacaoBeneficiario>? CotacoesBeneficiarios { get; set; }
+    public virtual ICollection<CotacaoCobertura>? CotacoesCoberturas { get; set; }
 }

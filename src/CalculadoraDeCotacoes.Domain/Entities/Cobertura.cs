@@ -8,4 +8,5 @@ public class Cobertura
     public decimal Valor { get; set; }
     
     public virtual TipoCobertura? TipoCobertura { get; set; }
+    public virtual ICollection<CotacaoCobertura>? CotacoesCoberturas { get; set; }
 }
