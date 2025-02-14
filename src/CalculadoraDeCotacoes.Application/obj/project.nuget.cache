@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "WLkoIE5BfpM=",
+  "dgSpecHash": "bjkCTO9twWE=",
   "success": true,
   "projectFilePath": "C:\\Users\\Otavio\\RiderProjects\\CalculadoraDeCotacoes\\src\\CalculadoraDeCotacoes.Application\\CalculadoraDeCotacoes.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Otavio\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
+    "C:\\Users\\Otavio\\.nuget\\packages\\mapster.core\\1.2.1\\mapster.core.1.2.1.nupkg.sha512",
+    "C:\\Users\\Otavio\\.nuget\\packages\\mapster.dependencyinjection\\1.0.1\\mapster.dependencyinjection.1.0.1.nupkg.sha512",
+    "C:\\Users\\Otavio\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

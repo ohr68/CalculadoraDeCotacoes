@@ -1,0 +1,30 @@
+﻿using CalculadoraDeCotacoes.Domain.Exceptions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace CalculadoraDeCotacoes.Api.Filters;
+
+public class GlobalExceptionFilter : IExceptionFilter
+{
+    public void OnException(ExceptionContext context)
+    {
+        var statusCode = context.Exception switch
+        {
+            BadRequestException => StatusCodes.Status400BadRequest,
+            NotFoundException => StatusCodes.Status404NotFound,
+            ValidationException => StatusCodes.Status422UnprocessableEntity,
+            _ => StatusCodes.Status500InternalServerError
+        };
+        
+        context.Result = new ObjectResult(new ProblemDetails
+        {
+            Title = "Ocorreu um erro",
+            Detail = context.Exception.Message,
+            Type = context.Exception.GetType().Name,
+            Status = statusCode
+        })
+        {
+            StatusCode = statusCode
+        };
+    }
+}

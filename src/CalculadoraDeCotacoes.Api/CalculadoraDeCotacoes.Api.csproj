@@ -8,13 +8,28 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Common\" />
-      <Folder Include="Features\" />
+      <Folder Include="Features\Beneficiario\AlterarBeneficiario\" />
+      <Folder Include="Features\Beneficiario\DetalharBeneficiario\" />
+      <Folder Include="Features\Beneficiario\ExcluirBeneficiario\" />
+      <Folder Include="Features\Beneficiario\ListarBeneficiariosPorCotacao\" />
+      <Folder Include="Features\Cobertura\ExcluirCobertura\" />
+      <Folder Include="Features\Cobertura\IncluirCobertura\" />
+      <Folder Include="Features\Cobertura\ListarCoberturasPorCotacao\" />
+      <Folder Include="Features\Cotacao\AlterarCotacao\" />
+      <Folder Include="Features\Cotacao\ExcluirCotacao\" />
+      <Folder Include="Features\Cotacao\IncluirCotacao\" />
+      <Folder Include="Features\Cotacao\ListarCotacoesPorParceiro\" />
       <Folder Include="Middleware\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CalculadoraDeCotacoes.Application\CalculadoraDeCotacoes.Application.csproj" />
+      <ProjectReference Include="..\CalculadoraDeCotacoes.Persistence\CalculadoraDeCotacoes.Persistence.csproj" />
     </ItemGroup>
 
 </Project>
