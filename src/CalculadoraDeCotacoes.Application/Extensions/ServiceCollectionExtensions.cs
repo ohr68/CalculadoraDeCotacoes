@@ -17,6 +17,8 @@ public static class ServiceCollectionExtensions
     {
         services.AddMapster();
 
+        TypeAdapterConfig.GlobalSettings.Scan(AppDomain.CurrentDomain.GetAssemblies());
+        
         return services;
     }
 }

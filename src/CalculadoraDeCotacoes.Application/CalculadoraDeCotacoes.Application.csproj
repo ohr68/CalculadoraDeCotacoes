@@ -7,23 +7,27 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Beneficiario\AlterarBeneficiario\" />
-      <Folder Include="Beneficiario\DetalharBeneficiario\" />
-      <Folder Include="Beneficiario\ExcluirBeneficiario\" />
-      <Folder Include="Beneficiario\ListarBeneficiariosPorCotacao\" />
-      <Folder Include="Cobertura\ExcluirCobertura\" />
-      <Folder Include="Cobertura\IncluirCobertura\" />
-      <Folder Include="Cobertura\ListarCoberturasPorCotacao\" />
-      <Folder Include="Cotacao\AlterarCotacao\" />
-      <Folder Include="Cotacao\IncluirCotacao\" />
-      <Folder Include="Cotacao\ExcluirCotacao\" />
-      <Folder Include="Cotacao\ListarCotacoesPorParceiro\" />
+      <Folder Include="Beneficiarios\AlterarBeneficiario\" />
+      <Folder Include="Beneficiarios\DetalharBeneficiario\" />
+      <Folder Include="Beneficiarios\ExcluirBeneficiario\" />
+      <Folder Include="Beneficiarios\ListarBeneficiariosPorCotacao\" />
+      <Folder Include="Coberturas\ExcluirCobertura\" />
+      <Folder Include="Coberturas\IncluirCobertura\" />
+      <Folder Include="Coberturas\ListarCoberturasPorCotacao\" />
+      <Folder Include="Cotacoes\DetalharCotacao\" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.11.0" />
       <PackageReference Include="Mapster" Version="7.4.0" />
       <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+      <PackageReference Include="MediatR" Version="12.4.1" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CalculadoraDeCotacoes.Domain\CalculadoraDeCotacoes.Domain.csproj" />
+      <ProjectReference Include="..\CalculadoraDeCotacoes.Persistence\CalculadoraDeCotacoes.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

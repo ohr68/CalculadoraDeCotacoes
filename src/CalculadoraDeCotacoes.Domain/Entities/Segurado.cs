@@ -3,7 +3,7 @@
 public class Segurado
 {
     public int CotacaoId { get; set; }
-    public string? NomeSegurado { get; set; }
+    public string? Nome { get; set; }
     public int Ddd { get; set; }
     public int Telefone { get; set; }
     public string? Endereco { get; set; }

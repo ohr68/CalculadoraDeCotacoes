@@ -12,7 +12,7 @@ public class SeguradoConfiguration : IEntityTypeConfiguration<Segurado>
 
         builder.HasKey(s => s.CotacaoId);
 
-        builder.Property(s => s.NomeSegurado)
+        builder.Property(s => s.Nome)
             .HasColumnType("varchar(150)")
             .IsRequired();
 

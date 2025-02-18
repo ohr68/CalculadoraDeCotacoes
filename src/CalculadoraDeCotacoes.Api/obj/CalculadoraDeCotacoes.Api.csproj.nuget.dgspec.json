@@ -115,7 +115,14 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Otavio\\RiderProjects\\CalculadoraDeCotacoes\\src\\CalculadoraDeCotacoes.Domain\\CalculadoraDeCotacoes.Domain.csproj": {
+                "projectPath": "C:\\Users\\Otavio\\RiderProjects\\CalculadoraDeCotacoes\\src\\CalculadoraDeCotacoes.Domain\\CalculadoraDeCotacoes.Domain.csproj"
+              },
+              "C:\\Users\\Otavio\\RiderProjects\\CalculadoraDeCotacoes\\src\\CalculadoraDeCotacoes.Persistence\\CalculadoraDeCotacoes.Persistence.csproj": {
+                "projectPath": "C:\\Users\\Otavio\\RiderProjects\\CalculadoraDeCotacoes\\src\\CalculadoraDeCotacoes.Persistence\\CalculadoraDeCotacoes.Persistence.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -133,6 +140,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
             "Mapster": {
               "target": "Package",
               "version": "[7.4.0, )"
@@ -140,6 +151,10 @@
             "Mapster.DependencyInjection": {
               "target": "Package",
               "version": "[1.0.1, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
