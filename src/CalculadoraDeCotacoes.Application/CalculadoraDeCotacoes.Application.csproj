@@ -7,9 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Coberturas\ExcluirCobertura\" />
-      <Folder Include="Coberturas\IncluirCobertura\" />
-      <Folder Include="Coberturas\ListarCoberturasPorCotacao\" />
       <Folder Include="Models\ViewModels\" />
     </ItemGroup>
 
