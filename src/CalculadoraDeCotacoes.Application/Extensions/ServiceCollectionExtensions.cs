@@ -1,4 +1,6 @@
-﻿using Mapster;
+﻿using CalculadoraDeCotacoes.Application.Cotacoes.IncluirCotacao;
+using FluentValidation;
+using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CalculadoraDeCotacoes.Application.Extensions;
@@ -8,6 +10,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddApplicationLayer(this IServiceCollection services)
     {
         services
+            .AddValidation()
             .ConfigureMapster();
 
         return services;
@@ -18,7 +21,14 @@ public static class ServiceCollectionExtensions
         services.AddMapster();
 
         TypeAdapterConfig.GlobalSettings.Scan(AppDomain.CurrentDomain.GetAssemblies());
-        
+
+        return services;
+    }
+
+    private static IServiceCollection AddValidation(this IServiceCollection services)
+    {
+        services.AddValidatorsFromAssemblyContaining<IncluirCotacaoValidator>();
+
         return services;
     }
 }

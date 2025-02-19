@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CalculadoraDeCotacoes.Application.Common;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CalculadoraDeCotacoes.Api.Common;
 

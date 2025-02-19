@@ -1,4 +1,6 @@
-﻿namespace CalculadoraDeCotacoes.Api.Common;
+﻿using CalculadoraDeCotacoes.Application.Common;
+
+namespace CalculadoraDeCotacoes.Api.Common;
 
 public class PaginatedListResponse<T> : ApiResponseWithData<IEnumerable<T>>
 {

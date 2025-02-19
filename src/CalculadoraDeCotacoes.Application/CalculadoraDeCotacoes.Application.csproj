@@ -7,18 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Beneficiarios\AlterarBeneficiario\" />
-      <Folder Include="Beneficiarios\DetalharBeneficiario\" />
-      <Folder Include="Beneficiarios\ExcluirBeneficiario\" />
-      <Folder Include="Beneficiarios\ListarBeneficiariosPorCotacao\" />
       <Folder Include="Coberturas\ExcluirCobertura\" />
       <Folder Include="Coberturas\IncluirCobertura\" />
       <Folder Include="Coberturas\ListarCoberturasPorCotacao\" />
-      <Folder Include="Cotacoes\DetalharCotacao\" />
+      <Folder Include="Models\ViewModels\" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="FluentValidation" Version="11.11.0" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
       <PackageReference Include="Mapster" Version="7.4.0" />
       <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
       <PackageReference Include="MediatR" Version="12.4.1" />

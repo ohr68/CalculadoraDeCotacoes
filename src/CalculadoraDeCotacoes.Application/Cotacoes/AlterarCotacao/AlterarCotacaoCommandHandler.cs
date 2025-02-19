@@ -11,7 +11,7 @@ namespace CalculadoraDeCotacoes.Application.Cotacoes.AlterarCotacao;
 public class AlterarCotacaoCommandHandler(
     ApplicationDbContext context,
     IValidator<AlterarCotacaoCommand> alterarCotacaoValidator,
-    IValidator<CotacaoBeneficiarioInputModel> beneficiarioValidator)
+    IValidator<BeneficiarioInputModel> beneficiarioValidator)
     : IRequestHandler<AlterarCotacaoCommand, AlterarCotacaoResult>
 {
     public async Task<AlterarCotacaoResult> Handle(AlterarCotacaoCommand request, CancellationToken cancellationToken)

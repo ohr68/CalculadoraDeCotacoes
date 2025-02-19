@@ -13,7 +13,7 @@ public class IncluirCotacaoCommandProfile : IRegister
                 src.NomeSegurado, src.Ddd, src.Telefone, src.Endereco, src.Cep, src.Documento, src.Premio,
                 src.ImportanciaSegurada, src.DataNascimento
             })
-            .Map(dest => dest.CotacoesBeneficiarios, src => src.Beneficiarios);
+            .Map(dest => dest.CotacoesBeneficiarios, src => src.Beneficiarios!.OrderBy(cb => cb.IdParentesco));
 
         config.NewConfig<Cotacao, IncluirCotacaoResult>();
     }

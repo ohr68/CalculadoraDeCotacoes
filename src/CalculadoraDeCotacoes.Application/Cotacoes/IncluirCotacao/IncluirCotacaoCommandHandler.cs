@@ -9,7 +9,7 @@ namespace CalculadoraDeCotacoes.Application.Cotacoes.IncluirCotacao;
 public class IncluirCotacaoCommandHandler(
     ApplicationDbContext context,
     IValidator<IncluirCotacaoCommand> incluirCotacaoValidator,
-    IValidator<CotacaoBeneficiarioInputModel> beneficiarioValidator)
+    IValidator<BeneficiarioInputModel> beneficiarioValidator)
     : IRequestHandler<IncluirCotacaoCommand, IncluirCotacaoResult>
 {
     public async Task<IncluirCotacaoResult> Handle(IncluirCotacaoCommand request, CancellationToken cancellationToken)

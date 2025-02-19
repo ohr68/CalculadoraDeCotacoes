@@ -1,11 +1,10 @@
-﻿using CalculadoraDeCotacoes.Domain.Enums;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace CalculadoraDeCotacoes.Application.Models.InputModels;
 
-public class CotacaoBeneficiarioInputModelValidator : AbstractValidator<CotacaoBeneficiarioInputModel>
+public class BeneficiarioInputModelValidator : AbstractValidator<BeneficiarioInputModel>
 {
-    public CotacaoBeneficiarioInputModelValidator()
+    public BeneficiarioInputModelValidator()
     {
         RuleFor(cb => cb.Nome)
             .NotEmpty()
