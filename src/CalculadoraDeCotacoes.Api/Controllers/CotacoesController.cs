@@ -41,8 +41,8 @@ public class CotacoesController(IMediator mediator) : BaseController
     /// <param name="query">Modelo da Requisição de consulta cotendo o id da cotação</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>Detalhes da cotação</returns>
-    [HttpGet("/detalhes")]
-    [ProducesResponseType(typeof(DetalharCotacaoResult), StatusCodes.Status200OK, contentType: "application/json")]
+    [HttpGet("/detalhes-cotacao")]
+    [ProducesResponseType(typeof(ApiResponseWithData<DetalharCotacaoResult>), StatusCodes.Status200OK, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound, contentType: "application/json")]
@@ -60,7 +60,7 @@ public class CotacoesController(IMediator mediator) : BaseController
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>Resultado da operação de inclusão</returns>
     [HttpPost]
-    [ProducesResponseType(typeof(IncluirCotacaoResult), StatusCodes.Status201Created, contentType: "application/json")]
+    [ProducesResponseType(typeof(ApiResponseWithData<IncluirCotacaoResult>), StatusCodes.Status201Created, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound, contentType: "application/json")]
@@ -80,7 +80,7 @@ public class CotacoesController(IMediator mediator) : BaseController
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>Resultado da operação de alteração</returns>
     [HttpPut("{idCotacao:int}")]
-    [ProducesResponseType(typeof(AlterarCotacaoResult), StatusCodes.Status200OK, contentType: "application/json")]
+    [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound, contentType: "application/json")]
@@ -104,7 +104,7 @@ public class CotacoesController(IMediator mediator) : BaseController
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>Resultado da operação de exclusão</returns>
     [HttpDelete]
-    [ProducesResponseType(typeof(ExcluirCotacaoResult), StatusCodes.Status200OK, contentType: "application/json")]
+    [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden, contentType: "application/json")]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound, contentType: "application/json")]

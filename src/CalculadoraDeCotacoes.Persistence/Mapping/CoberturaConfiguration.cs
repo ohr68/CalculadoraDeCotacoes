@@ -9,8 +9,11 @@ public class CoberturaConfiguration : IEntityTypeConfiguration<Cobertura>
     public void Configure(EntityTypeBuilder<Cobertura> builder)
     {
         builder.ToTable("Cobertura");
-        
+
         builder.HasKey(c => c.Id);
+
+        builder.Property(c => c.Id)
+            .ValueGeneratedNever();
 
         builder.Property(c => c.Descricao)
             .HasColumnType("varchar(250)")

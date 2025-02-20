@@ -1,9 +1,8 @@
-﻿using CalculadoraDeCotacoes.Application.Beneficiarios.ListarBeneficiariosPorCotacao;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace CalculadoraDeCotacoes.Application.Coberturas.ListarCoberturasPorCotacao;
 
-public class ListarCoberturasPorCotacaoValidator : AbstractValidator<ListarBeneficiariosPorCotacaoQuery>
+public class ListarCoberturasPorCotacaoValidator : AbstractValidator<ListarCoberturasPorCotacaoQuery>
 {
     public ListarCoberturasPorCotacaoValidator()
     {

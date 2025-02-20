@@ -17,5 +17,4 @@ public class AlterarCotacaoCommand : IRequest<AlterarCotacaoResult>
     public DateOnly DataNascimento { get; set; }
     public decimal Premio { get; set; }
     public decimal ImportanciaSegurada { get; set; }
-    public ICollection<BeneficiarioInputModel>? Beneficiarios { get; set; }
 }

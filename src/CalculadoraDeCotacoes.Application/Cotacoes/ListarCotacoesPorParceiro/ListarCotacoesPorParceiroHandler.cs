@@ -13,7 +13,6 @@ namespace CalculadoraDeCotacoes.Application.Cotacoes.ListarCotacoesPorParceiro;
 
 public class ListarCotacoesPorParceiroHandler(
     ApplicationDbContext context,
-    IValidator<ListarCotacoesPorParceiroQuery> requisicaoValidator,
     IValidator<RequisicaoPaginadaInputModel> requisicaoPaginadaValidator,
     IAuthService authService)
     : IRequestHandler<ListarCotacoesPorParceiroQuery, PaginatedList<ListarCotacoesPorParceiroResult>>
@@ -22,12 +21,7 @@ public class ListarCotacoesPorParceiroHandler(
         CancellationToken cancellationToken)
     {
         var idParceiro = await authService.ObterIdParceiro(cancellationToken);
-
-        var validationResult = await requisicaoValidator.ValidateAsync(request, cancellationToken);
-
-        if (!validationResult.IsValid)
-            throw new ValidationException(validationResult.Errors);
-
+        
         var paginacaoValidationResult = await requisicaoPaginadaValidator.ValidateAsync(request, cancellationToken);
 
         if (!paginacaoValidationResult.IsValid)

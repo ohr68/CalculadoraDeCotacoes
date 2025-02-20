@@ -12,7 +12,6 @@ public class AlterarCotacaoProfile : IRegister
             {
                 src.NomeSegurado, src.Ddd, src.Telefone, src.Endereco, src.Cep, src.Documento, src.Premio,
                 src.ImportanciaSegurada, src.DataNascimento
-            })
-            .Map(dest => dest.CotacoesBeneficiarios, src => src.Beneficiarios);
+            });
     }
 }

@@ -12,7 +12,6 @@ namespace CalculadoraDeCotacoes.Application.Cotacoes.AlterarCotacao;
 public class AlterarCotacaoCommandHandler(
     ApplicationDbContext context,
     IValidator<AlterarCotacaoCommand> alterarCotacaoValidator,
-    IValidator<BeneficiarioInputModel> beneficiarioValidator,
     IAuthService authService)
     : IRequestHandler<AlterarCotacaoCommand, AlterarCotacaoResult>
 {
@@ -22,18 +21,6 @@ public class AlterarCotacaoCommandHandler(
 
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
-
-        if (request.Beneficiarios is not null && request.Beneficiarios.Count > 0)
-        {
-            foreach (var beneficiario in request.Beneficiarios)
-            {
-                var beneficiariosValidationResult =
-                    await beneficiarioValidator.ValidateAsync(beneficiario, cancellationToken);
-
-                if (!beneficiariosValidationResult.IsValid)
-                    throw new ValidationException(beneficiariosValidationResult.Errors);
-            }
-        }
 
         var cotacao = request.Adapt<Cotacao>();
         

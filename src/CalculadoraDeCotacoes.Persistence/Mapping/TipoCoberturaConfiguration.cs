@@ -12,6 +12,9 @@ public class TipoCoberturaConfiguration : IEntityTypeConfiguration<TipoCobertura
         
         builder.HasKey(t => t.Id);
         
+        builder.Property(t => t.Id)
+            .ValueGeneratedNever();
+        
         builder.Property(t => t.Descricao)
             .HasColumnType("varchar(50)")
             .IsRequired();

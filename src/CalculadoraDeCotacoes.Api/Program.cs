@@ -1,8 +1,10 @@
 using System.Reflection;
 using CalculadoraDeCotacoes.Api.Filters;
+using CalculadoraDeCotacoes.Application.Common.Constants;
 using CalculadoraDeCotacoes.Application.Extensions;
 using CalculadoraDeCotacoes.Common.HealthChecks;
 using CalculadoraDeCotacoes.Common.Logging;
+using CalculadoraDeCotacoes.Persistence.Configuration;
 using CalculadoraDeCotacoes.Persistence.Context;
 using CalculadoraDeCotacoes.Persistence.Extensions;
 using Microsoft.OpenApi.Models;
@@ -30,7 +32,7 @@ try
     builder.Services.AddControllers(options =>
     {
         options.Filters.Add(new GlobalExceptionFilter());
-        
+
         options.Filters.Add<ParceiroAuthorizationFilter>();
     });
 
@@ -38,7 +40,7 @@ try
     builder.Services.AddEndpointsApiExplorer();
 
     builder.AddBasicHealthChecks();
-    
+
     builder.Services.AddSwaggerGen(options =>
     {
         options.SwaggerDoc("v1", new OpenApiInfo
@@ -50,8 +52,28 @@ try
 
         var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
         options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
-    });
 
+        options.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
+        {
+            In = ParameterLocation.Header,
+            Name = Auth.Secret,
+            Type = SecuritySchemeType.ApiKey,
+            Description = "Secret do parceiro. Obrigatório para acessar os endpoints.",
+        });
+
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "ApiKey" }
+                },
+                Array.Empty<string>()
+            }
+        });
+    });
+    
+    builder.Services.AddHttpContextAccessor();
     builder.Services.AddApplicationLayer();
     builder.Services.AddPersistenceLayer(builder.Configuration, builder.Environment.IsDevelopment());
 
@@ -78,6 +100,7 @@ try
     {
         var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         context.Database.EnsureCreated();
+        DbInitializer.SeedDatabase(context);
     }
 
     app.Run();
@@ -86,6 +109,7 @@ catch (Exception ex)
 {
     Log.Fatal(ex, "A aplicação finalizou de maneira inesperada.");
     Console.WriteLine($"Critical error: {ex.Message}");
+    Console.WriteLine(ex.InnerException?.Message);
     Console.WriteLine(ex.StackTrace);
 }
 finally

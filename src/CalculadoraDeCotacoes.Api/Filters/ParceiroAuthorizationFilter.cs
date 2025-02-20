@@ -15,7 +15,7 @@ public class ParceiroAuthorizationFilter(ApplicationDbContext dbContext) : IAsyn
         if (!request.Headers.TryGetValue(Auth.Secret, out var secret))
             throw new UnauthorizedException("É obrigatório informar o secret do parceiro.");
 
-        var parceiro = await dbContext.Parceiros.FirstOrDefaultAsync(p => p.Secret == secret) ??
+        var parceiro = await dbContext.Parceiros.FirstOrDefaultAsync(p => p.Secret == secret.ToString()) ??
                        throw new ForbiddenException("Secret inválido.");
 
         context.HttpContext.Items[Auth.IdParceiro] = parceiro.Id;

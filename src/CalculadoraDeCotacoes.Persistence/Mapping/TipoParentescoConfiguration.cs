@@ -12,6 +12,9 @@ public class TipoParentescoConfiguration : IEntityTypeConfiguration<TipoParentes
         
         builder.HasKey(t => t.Id);
         
+        builder.Property(t => t.Id)
+            .ValueGeneratedNever();
+        
         builder.Property(t => t.Descricao)
             .HasColumnType("varchar(60)")
             .IsRequired();
