@@ -2,9 +2,9 @@
 
 namespace CalculadoraDeCotacoes.Application.Models.InputModels;
 
-public class PagedRequestInputModelValidator : AbstractValidator<RequisicaoPaginadaInputModel>
+public class RequisicaoPaginadaInputModelValidator : AbstractValidator<RequisicaoPaginadaInputModel>
 {
-    public PagedRequestInputModelValidator()
+    public RequisicaoPaginadaInputModelValidator()
     {
         RuleFor(p => p.Pagina)
             .NotEmpty()

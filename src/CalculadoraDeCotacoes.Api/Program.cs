@@ -10,7 +10,6 @@ using CalculadoraDeCotacoes.Persistence.Extensions;
 using Microsoft.OpenApi.Models;
 using Serilog;
 
-
 try
 {
     Log.Information("Iniciando a aplicação web");
@@ -116,3 +115,6 @@ finally
 {
     Log.CloseAndFlush();
 }
+
+
+public partial class Program { }

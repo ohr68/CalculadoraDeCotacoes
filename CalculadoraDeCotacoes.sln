@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functional", "Functional", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadoraDeCotacoes.Tests.Unit", "tests\CalculadoraDeCotacoes.Tests.Unit\CalculadoraDeCotacoes.Tests.Unit.csproj", "{5F80FD74-2A07-4660-A228-F871F324A5D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadoraCotacoes.Tests.Functional", "tests\CalculadoraCotacoes.Tests.Functional\CalculadoraCotacoes.Tests.Functional.csproj", "{C280C3EB-EF96-43B9-963E-EC0F2AD9BD46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,7 @@ Global
 		{95151095-DE17-44F8-828C-D6538479C731} = {3A09572D-8768-4A9D-9521-30CE407836D1}
 		{3F6D42AA-98F5-46CD-90D4-3B4BB13F5FF3} = {3A09572D-8768-4A9D-9521-30CE407836D1}
 		{5F80FD74-2A07-4660-A228-F871F324A5D7} = {198DA85C-6316-4654-BCF2-8AFC34D26D15}
+		{C280C3EB-EF96-43B9-963E-EC0F2AD9BD46} = {3F6D42AA-98F5-46CD-90D4-3B4BB13F5FF3}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{45A1EB22-A7A3-461D-9880-990C818E530F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -77,5 +80,9 @@ Global
 		{5F80FD74-2A07-4660-A228-F871F324A5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F80FD74-2A07-4660-A228-F871F324A5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F80FD74-2A07-4660-A228-F871F324A5D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C280C3EB-EF96-43B9-963E-EC0F2AD9BD46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C280C3EB-EF96-43B9-963E-EC0F2AD9BD46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C280C3EB-EF96-43B9-963E-EC0F2AD9BD46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C280C3EB-EF96-43B9-963E-EC0F2AD9BD46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
