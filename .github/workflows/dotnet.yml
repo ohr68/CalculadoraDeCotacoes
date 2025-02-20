@@ -1,28 +1,31 @@
-name: Build and Test Solution
+name: CI
 
 on:
   push:
     branches:
-      - main
-
+      - master
+  pull_request:
+    branches:
+      - '*'
+      
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '8.0'
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0'
 
-      - name: Restore dependencies
-        run: dotnet restore ./CalculadoraDeCotacoes.sln
-        
-      - name: Build solution
-        run: dotnet build ./CalculadoraDeCotacoes.sln
+    - name: Restore dependencies
+      run: dotnet restore CalculadoraDeCotacoes.sln
 
-      - name: Run tests
-        run: dotnet test ./CalculadoraDeCotacoes.sln
+    - name: Build
+      run: dotnet build CalculadoraDeCotacoes.sln --no-restore --configuration Release
+
+    - name: Run tests
+      run: dotnet test CalculadoraDeCotacoes.sln --no-restore --verbosity normal --configuration Release
