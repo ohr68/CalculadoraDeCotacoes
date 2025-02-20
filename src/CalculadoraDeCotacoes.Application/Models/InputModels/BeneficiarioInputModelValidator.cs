@@ -17,8 +17,6 @@ public class BeneficiarioInputModelValidator : AbstractValidator<BeneficiarioInp
             .WithMessage("É obrigatório informar o percentual.");
         
         RuleFor(cb => cb.IdParentesco)
-            .NotEmpty()
-            .WithMessage("É obrigatório informar o parentesco.")
             .IsInEnum()
             .WithMessage("Informe um tipo de parentesco válido.");
     }
