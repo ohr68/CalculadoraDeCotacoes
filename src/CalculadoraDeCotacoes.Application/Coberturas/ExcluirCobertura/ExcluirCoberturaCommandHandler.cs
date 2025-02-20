@@ -19,7 +19,9 @@ public class ExcluirCoberturaCommandHandler(
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var cotacao = await context.Cotacoes.SingleOrDefaultAsync(c => c.Id == request.IdCotacao, cancellationToken);
+        var cotacao = await context.Cotacoes
+            .Include(c => c.Segurado)
+            .SingleOrDefaultAsync(c => c.Id == request.IdCotacao, cancellationToken);
 
         if (cotacao is null)
             throw new NotFoundException($"Cotação de id {request.IdCotacao} não encontrada.");
@@ -38,6 +40,10 @@ public class ExcluirCoberturaCommandHandler(
                 $"Cobertura de id {request.IdCobertura} não encontrada na cotação de id {request.IdCotacao}.");
 
         context.CotacoesCoberturas.Remove(cotacaoCobertura);
+        
+        cotacao.Segurado!.CalcularValorPremio();
+        context.Entry(cotacao).State = EntityState.Modified;
+        
         var sucesso = await context.SaveChangesAsync(cancellationToken) > 0;
 
         return new ExcluirCoberturaResult(sucesso);

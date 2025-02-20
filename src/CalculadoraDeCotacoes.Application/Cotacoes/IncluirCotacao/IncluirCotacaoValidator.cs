@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using CalculadoraDeCotacoes.Domain.Enums;
+using FluentValidation;
 
 namespace CalculadoraDeCotacoes.Application.Cotacoes.IncluirCotacao;
 
@@ -9,10 +10,6 @@ public class IncluirCotacaoValidator : AbstractValidator<IncluirCotacaoCommand>
         RuleFor(i => i.IdProduto)
             .NotEmpty()
             .WithMessage("É obrigatório informar o produto.");
-
-        RuleFor(i => i.IdParceiro)
-            .NotEmpty()
-            .WithMessage("É obrigatório informar o parceiro.");
 
         RuleFor(i => i.NomeSegurado)
             .NotEmpty()
@@ -63,13 +60,29 @@ public class IncluirCotacaoValidator : AbstractValidator<IncluirCotacaoCommand>
         RuleFor(i => i.ImportanciaSegurada)
             .NotEmpty()
             .WithMessage("É obrigatório informar a importância segurada.");
-
+        
         When(i => i.Beneficiarios is not null && i.Beneficiarios.Count > 0, () =>
         {
             RuleFor(b => b.Beneficiarios).Custom((list, context) =>
             {
                 if (list!.Sum(b => b.Percentual) != 100)
                     context.AddFailure("A soma do percentual deve ser 100.");
+            });
+        });
+
+        RuleFor(i => i.Coberturas)
+            .NotEmpty()
+            .WithMessage("É obrigatório informar ao menos duas coberturas.");
+
+        When(i => i.Coberturas is not null && i.Coberturas.Count > 0, () =>
+        {
+            RuleFor(b => b.Coberturas).Custom((list, context) =>
+            {
+                if (list!.Count(c => c.TipoCobertura == TipoCobertura.Basica) != 1)
+                    context.AddFailure("É obrigatório informar apenas uma cobertura do tipo 'Básica'.");
+
+                if (list!.All(c => c.TipoCobertura != TipoCobertura.Adicional))
+                    context.AddFailure("É obrigatório informar ao menos uma cobertura do tipo 'Adicional'.");
             });
         });
     }

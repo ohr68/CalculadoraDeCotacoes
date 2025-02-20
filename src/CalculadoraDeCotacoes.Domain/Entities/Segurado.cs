@@ -1,4 +1,6 @@
-﻿namespace CalculadoraDeCotacoes.Domain.Entities;
+﻿using FluentValidation;
+
+namespace CalculadoraDeCotacoes.Domain.Entities;
 
 public class Segurado
 {
@@ -12,6 +14,15 @@ public class Segurado
     public DateOnly DataNascimento { get; set; }
     public decimal Premio { get; set; }
     public decimal ImportanciaSegurada { get; set; }
-    
+
     public virtual Cotacao? Cotacao { get; set; }
+
+    public void CalcularValorPremio()
+        => Premio = Cotacao!.Produto!.ValorBase + Cotacao!.CotacoesCoberturas!.Sum(c => c.ValorTotal);
+
+    public void VerificarValorImportanciaSegurada()
+    {
+        if (ImportanciaSegurada > Cotacao!.Produto!.Limite)
+            throw new ValidationException("O valor da IS está fora do limite permitido para o produto informado.");
+    }
 }

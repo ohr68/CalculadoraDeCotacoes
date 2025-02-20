@@ -17,4 +17,5 @@ public class IncluirCotacaoCommand : IRequest<IncluirCotacaoResult>
     public decimal Premio { get; set; }
     public decimal ImportanciaSegurada { get; set; }
     public ICollection<BeneficiarioInputModel>? Beneficiarios { get; set; }
+    public ICollection<CoberturaInputModel>? Coberturas { get; set; }
 }

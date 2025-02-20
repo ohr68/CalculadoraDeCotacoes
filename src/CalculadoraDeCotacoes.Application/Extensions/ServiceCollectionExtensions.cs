@@ -1,4 +1,6 @@
-﻿using CalculadoraDeCotacoes.Application.Cotacoes.IncluirCotacao;
+﻿using CalculadoraDeCotacoes.Application.Common;
+using CalculadoraDeCotacoes.Application.Common.Interfaces;
+using CalculadoraDeCotacoes.Application.Cotacoes.IncluirCotacao;
 using FluentValidation;
 using Mapster;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,11 +13,19 @@ public static class ServiceCollectionExtensions
     {
         services
             .AddValidation()
+            .AddHelpers()
             .ConfigureMapster();
 
         return services;
     }
 
+    private static IServiceCollection AddHelpers(this IServiceCollection services)
+    {
+        services.AddScoped<IFaixaDeIdadeHelper, FaixaDeIdadeHelper>();
+        
+        return services;
+    }
+    
     private static IServiceCollection ConfigureMapster(this IServiceCollection services)
     {
         services.AddMapster();

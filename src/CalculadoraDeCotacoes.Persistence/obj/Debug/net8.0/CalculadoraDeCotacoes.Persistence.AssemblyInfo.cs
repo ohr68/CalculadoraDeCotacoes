@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CalculadoraDeCotacoes.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63555bafb8a72a5abf84f29bb148458601647057")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bba3e673a66af917efcc29327bf5e5e8968628d3")]
 [assembly: System.Reflection.AssemblyProductAttribute("CalculadoraDeCotacoes.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CalculadoraDeCotacoes.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
