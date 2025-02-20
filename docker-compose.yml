@@ -1,0 +1,52 @@
+services:
+  calculadora.de.cotacoes.api:
+    container_name: api_calculadora_de_cotacoes
+    image: ${DOCKER_REGISTRY-}calculadoradecotacoesapi
+    build:
+      context: .
+      dockerfile: src/CalculadoraDeCotacoes.Api/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=Senha@123
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=80
+      - ASPNETCORE_HTTPS_PORTS=443
+      - ConnectionStrings__CalculadoraDeCotacoes=Server=sql-server;Database=calculadoraDeCotacoes;User Id=sa;Password=Senha@123;Encrypt=True;TrustServerCertificate=True;
+    ports:
+      - "5000:80"
+      - "5001:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ${USERPROFILE}\.aspnet\https:/https:ro
+    depends_on:
+      sql-server:
+        condition: service_started
+    networks:
+      - calculadora_network
+    command: sh -c "sleep 10 && dotnet ef database update && dotnet CalculadoraDeCotacoes.Api.dll"
+  
+  sql-server:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Senha@123
+    ports:
+      - "1433:1433"
+    networks:
+      - calculadora_network
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: [ "CMD-SHELL", "echo 'SELECT 1' | /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Senha@123" ]
+      interval: 10s
+      retries: 5
+
+networks:
+  calculadora_network:
+    driver: bridge
+
+volumes:
+  sqlserver-data:

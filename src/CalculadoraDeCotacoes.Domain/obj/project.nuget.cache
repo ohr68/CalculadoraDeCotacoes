@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "yx3ipqXA500=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Otavio\\RiderProjects\\CalculadoraDeCotacoes\\src\\CalculadoraDeCotacoes.Domain\\CalculadoraDeCotacoes.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Otavio\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512"
+  ],
+  "logs": []
+}
