@@ -53,10 +53,6 @@ public class IncluirCotacaoValidator : AbstractValidator<IncluirCotacaoCommand>
             .NotEmpty()
             .WithMessage("É obrigatório informar a data de nascimento.");
 
-        RuleFor(i => i.Premio)
-            .NotEmpty()
-            .WithMessage("É obrigatório informar o prêmio.");
-
         RuleFor(i => i.ImportanciaSegurada)
             .NotEmpty()
             .WithMessage("É obrigatório informar a importância segurada.");

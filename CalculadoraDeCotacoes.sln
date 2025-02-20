@@ -15,15 +15,22 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadoraDeCotacoes.Api", "src\CalculadoraDeCotacoes.Api\CalculadoraDeCotacoes.Api.csproj", "{D6A01309-0934-4F5A-9F77-713286EB51B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E7298701-16C0-4206-A9C4-CB48A8C4D223}"
-	ProjectSection(SolutionItems) = preProject
-		docker-compose.override.yml = docker-compose.override.yml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{8AA9A24F-FCBB-4B6E-99A0-8BE8DB066758}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadoraDeCotacoes.Common", "src\CalculadoraDeCotacoes.Common\CalculadoraDeCotacoes.Common.csproj", "{3D625644-42A7-4A00-A935-713B1E31EB77}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "docker-compose", "docker-compose.dcproj", "{4AF79501-F785-4B98-8EE5-54BE186D67A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3A09572D-8768-4A9D-9521-30CE407836D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{198DA85C-6316-4654-BCF2-8AFC34D26D15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{95151095-DE17-44F8-828C-D6538479C731}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functional", "Functional", "{3F6D42AA-98F5-46CD-90D4-3B4BB13F5FF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadoraDeCotacoes.Tests.Unit", "tests\CalculadoraDeCotacoes.Tests.Unit\CalculadoraDeCotacoes.Tests.Unit.csproj", "{5F80FD74-2A07-4660-A228-F871F324A5D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +43,10 @@ Global
 		{4BCF548F-3FC7-4177-9AB9-9C4A1B5491FB} = {1E7F8BB4-D25A-4C93-AC06-13BCA61964FD}
 		{D6A01309-0934-4F5A-9F77-713286EB51B9} = {4FA77266-3B4F-4AC7-BD2F-F3F45205772D}
 		{3D625644-42A7-4A00-A935-713B1E31EB77} = {8AA9A24F-FCBB-4B6E-99A0-8BE8DB066758}
+		{198DA85C-6316-4654-BCF2-8AFC34D26D15} = {3A09572D-8768-4A9D-9521-30CE407836D1}
+		{95151095-DE17-44F8-828C-D6538479C731} = {3A09572D-8768-4A9D-9521-30CE407836D1}
+		{3F6D42AA-98F5-46CD-90D4-3B4BB13F5FF3} = {3A09572D-8768-4A9D-9521-30CE407836D1}
+		{5F80FD74-2A07-4660-A228-F871F324A5D7} = {198DA85C-6316-4654-BCF2-8AFC34D26D15}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{45A1EB22-A7A3-461D-9880-990C818E530F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -62,5 +73,9 @@ Global
 		{4AF79501-F785-4B98-8EE5-54BE186D67A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AF79501-F785-4B98-8EE5-54BE186D67A2}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{4AF79501-F785-4B98-8EE5-54BE186D67A2}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{5F80FD74-2A07-4660-A228-F871F324A5D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F80FD74-2A07-4660-A228-F871F324A5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F80FD74-2A07-4660-A228-F871F324A5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F80FD74-2A07-4660-A228-F871F324A5D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
