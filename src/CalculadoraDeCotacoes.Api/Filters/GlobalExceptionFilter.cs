@@ -12,11 +12,13 @@ public class GlobalExceptionFilter : IExceptionFilter
         var statusCode = context.Exception switch
         {
             BadRequestException => StatusCodes.Status400BadRequest,
+            UnauthorizedException => StatusCodes.Status401Unauthorized,
+            ForbiddenException => StatusCodes.Status403Forbidden,
             NotFoundException => StatusCodes.Status404NotFound,
             ValidationException => StatusCodes.Status422UnprocessableEntity,
             _ => StatusCodes.Status500InternalServerError
         };
-        
+
         context.Result = new ObjectResult(new ProblemDetails
         {
             Title = "Ocorreu um erro",

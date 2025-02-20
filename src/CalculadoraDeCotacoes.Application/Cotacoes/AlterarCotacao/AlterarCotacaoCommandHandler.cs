@@ -1,4 +1,5 @@
-﻿using CalculadoraDeCotacoes.Application.Models.InputModels;
+﻿using CalculadoraDeCotacoes.Application.Common.Interfaces;
+using CalculadoraDeCotacoes.Application.Models.InputModels;
 using CalculadoraDeCotacoes.Domain.Entities;
 using CalculadoraDeCotacoes.Persistence.Context;
 using FluentValidation;
@@ -11,7 +12,8 @@ namespace CalculadoraDeCotacoes.Application.Cotacoes.AlterarCotacao;
 public class AlterarCotacaoCommandHandler(
     ApplicationDbContext context,
     IValidator<AlterarCotacaoCommand> alterarCotacaoValidator,
-    IValidator<BeneficiarioInputModel> beneficiarioValidator)
+    IValidator<BeneficiarioInputModel> beneficiarioValidator,
+    IAuthService authService)
     : IRequestHandler<AlterarCotacaoCommand, AlterarCotacaoResult>
 {
     public async Task<AlterarCotacaoResult> Handle(AlterarCotacaoCommand request, CancellationToken cancellationToken)
@@ -34,6 +36,9 @@ public class AlterarCotacaoCommandHandler(
         }
 
         var cotacao = request.Adapt<Cotacao>();
+        
+        var idParceiro = await authService.ObterIdParceiro(cancellationToken);
+        cotacao.IdParceiro = idParceiro;
 
         context.Entry(cotacao).State = EntityState.Modified;
 

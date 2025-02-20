@@ -16,7 +16,8 @@ public class IncluirCotacaoCommandHandler(
     IValidator<IncluirCotacaoCommand> incluirCotacaoValidator,
     IValidator<BeneficiarioInputModel> beneficiarioValidator,
     IValidator<CoberturaInputModel> coberturaValidator,
-    IFaixaDeIdadeHelper faixaDeIdadeHelper)
+    IFaixaDeIdadeHelper faixaDeIdadeHelper,
+    IAuthService authService)
     : IRequestHandler<IncluirCotacaoCommand, IncluirCotacaoResult>
 {
     public async Task<IncluirCotacaoResult> Handle(IncluirCotacaoCommand request, CancellationToken cancellationToken)
@@ -78,9 +79,11 @@ public class IncluirCotacaoCommandHandler(
         }
 
         cotacao.Segurado!.VerificarValorImportanciaSegurada();
-
         cotacao.Segurado!.CalcularValorPremio();
 
+        var idParceiro = await authService.ObterIdParceiro(cancellationToken);
+        cotacao.IdParceiro = idParceiro;
+        
         await context.Cotacoes.AddAsync(cotacao, cancellationToken);
         var result = await context.SaveChangesAsync(cancellationToken);
 

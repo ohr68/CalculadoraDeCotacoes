@@ -1,6 +1,6 @@
 ﻿using CalculadoraDeCotacoes.Api.Common;
 
-namespace CalculadoraDeCotacoes.Api.Features.Beneficiario;
+namespace CalculadoraDeCotacoes.Api.Controllers;
 
 public class BeneficiariosController : BaseController
 {

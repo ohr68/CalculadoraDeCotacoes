@@ -19,6 +19,13 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
+    private static IServiceCollection AddServices(this IServiceCollection services)
+    {
+        services.AddScoped<IAuthService, AuthService>();
+        
+        return services;
+    }
+    
     private static IServiceCollection AddHelpers(this IServiceCollection services)
     {
         services.AddScoped<IFaixaDeIdadeHelper, FaixaDeIdadeHelper>();

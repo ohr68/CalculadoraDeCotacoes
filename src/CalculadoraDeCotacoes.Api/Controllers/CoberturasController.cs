@@ -1,6 +1,6 @@
 ﻿using CalculadoraDeCotacoes.Api.Common;
 
-namespace CalculadoraDeCotacoes.Api.Features.Cobertura;
+namespace CalculadoraDeCotacoes.Api.Controllers;
 
 public class CoberturasController : BaseController
 {
