@@ -23,6 +23,9 @@ jobs:
 
     - name: 📦 Restore dependencies
       run: dotnet restore CalculadoraDeCotacoes.sln
+    
+    - name: Set environment variable
+      run: echo "ASPNETCORE_ENVIRONMENT=Testing" >> $GITHUB_ENV
 
     - name: 🔨 Build Solution
       run: dotnet build CalculadoraDeCotacoes.sln --no-restore --configuration Release
