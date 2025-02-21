@@ -22,6 +22,8 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<ApplicationDbContext>(
             options =>
             {
+                
+                
                 var connectionString = configuration.GetConnectionString("CalculadoraDeCotacoes")!;
                 if (!isDevelopment)
                 {

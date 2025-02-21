@@ -31,11 +31,11 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             });
 
             // Ensure database is seeded for tests
-            using var scope = services.BuildServiceProvider().CreateScope();
-            var scopedServices = scope.ServiceProvider;
-            var db = scopedServices.GetRequiredService<ApplicationDbContext>();
-            db.Database.EnsureCreated();
-            DbInitializer.SeedDatabase(db);
+            // using var scope = services.BuildServiceProvider().CreateScope();
+            // var scopedServices = scope.ServiceProvider;
+            // var db = scopedServices.GetRequiredService<ApplicationDbContext>();
+            // db.Database.EnsureCreated();
+            // DbInitializer.SeedDatabase(db);
         });
     }
 }
