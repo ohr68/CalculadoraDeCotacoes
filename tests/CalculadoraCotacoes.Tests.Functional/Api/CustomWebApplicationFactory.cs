@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging; 
+using Microsoft.Extensions.Logging;
 
 
 namespace CalculadoraCotacoes.Tests.Functional.Api;
@@ -29,13 +29,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             {
                 options.UseInMemoryDatabase("InMemoryDbForTesting");
             });
-
-            // Ensure database is seeded for tests
-            // using var scope = services.BuildServiceProvider().CreateScope();
-            // var scopedServices = scope.ServiceProvider;
-            // var db = scopedServices.GetRequiredService<ApplicationDbContext>();
-            // db.Database.EnsureCreated();
-            // DbInitializer.SeedDatabase(db);
         });
     }
 }
