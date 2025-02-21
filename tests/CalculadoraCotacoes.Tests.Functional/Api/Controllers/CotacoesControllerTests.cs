@@ -3,6 +3,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using Bogus;
 using Bogus.Extensions.Brazil;
+using CalculadoraCotacoes.Tests.Functional.CustomOrderer;
 using CalculadoraDeCotacoes.Api.Common;
 using CalculadoraDeCotacoes.Application.Common.Constants;
 using CalculadoraDeCotacoes.Application.Cotacoes.IncluirCotacao;
@@ -13,6 +14,7 @@ using FluentAssertions;
 
 namespace CalculadoraCotacoes.Tests.Functional.Api.Controllers;
 
+[TestCaseOrderer("CalculadoraCotacoes.Tests.Functional.Api.Controllers.CotacoesControllerTests", "CalculadoraCotacoes.Tests.Functional")]
 public class CotacoesControllerTests : IClassFixture<CustomWebApplicationFactory>
 {
     private readonly HttpClient _client;
@@ -23,6 +25,7 @@ public class CotacoesControllerTests : IClassFixture<CustomWebApplicationFactory
         _client.DefaultRequestHeaders.Add(Auth.Secret, "XPTO2");
     }
 
+    [TestPriority(1)]
     [Fact(DisplayName = "Cadastrar cotação com sucesso.")]
     public async Task CadastrarCotacao_ComSucesso()
     {
@@ -60,6 +63,7 @@ public class CotacoesControllerTests : IClassFixture<CustomWebApplicationFactory
         content.Should().NotBeNullOrEmpty();
     }
 
+    [TestPriority(2)]
     [Fact(DisplayName = "Listar cotações com sucesso.")]
     public async Task ListarCotacoes_ComSucesso()
     {
