@@ -363,8 +363,7 @@ public class AlterarCotacaoValidatorTests
             Endereco = new Faker().Person.Address.Street,
             Cep = "15783970",
             Documento = new Faker().Person.Cpf(),
-            DataNascimento = new DateOnly(new Faker().Person.DateOfBirth.Year, new Faker().Person.DateOfBirth.Month,
-                new Faker().Person.DateOfBirth.Day),
+            DataNascimento = new DateOnly(1999, 01, 01),
             ImportanciaSegurada = 10_000M
         };
 

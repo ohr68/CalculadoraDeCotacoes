@@ -36,8 +36,8 @@ public class ListarCotacoesPorParceiroHandler(
         if (cotacoes.Count == 0)
             throw new NotFoundException("Nenhuma cotação encontrada para o parceiro informado.");
 
-        return await PaginatedList<ListarCotacoesPorParceiroResult>.CreateAsync(
-            cotacoes.Adapt<IQueryable<ListarCotacoesPorParceiroResult>>(), request.Pagina, request.RegistrosPorPagina,
+        return PaginatedList<ListarCotacoesPorParceiroResult>.Create(
+            cotacoes.Adapt<IEnumerable<ListarCotacoesPorParceiroResult>>(), request.Pagina, request.RegistrosPorPagina,
             cancellationToken);
     }
 }

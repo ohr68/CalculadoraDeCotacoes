@@ -13,6 +13,7 @@ namespace CalculadoraDeCotacoes.Api.Controllers;
 /// Controller responsável por gerenciar as operações relacionadas à beneficiários
 /// </summary>
 /// <param name="mediator"></param>
+[ApiController]
 [Route("api/[controller]")]
 public class BeneficiariosController(IMediator mediator) : BaseController
 {

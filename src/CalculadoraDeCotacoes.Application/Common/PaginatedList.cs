@@ -22,10 +22,11 @@ public class PaginatedList<T> : List<T>
         AddRange(items);
     }
 
-    public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> source, int pageNumber, int pageSize, CancellationToken cancellationToken = default)
+    public static PaginatedList<T> Create(IEnumerable<T> source, int pageNumber, int pageSize, CancellationToken cancellationToken = default)
     {
-        var count = await source.CountAsync(cancellationToken);
-        var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
+        var enumerable = source.ToList();
+        var count = enumerable.Count;
+        var items = enumerable.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
         return new PaginatedList<T>(items, count, pageNumber, pageSize);
     }
 }

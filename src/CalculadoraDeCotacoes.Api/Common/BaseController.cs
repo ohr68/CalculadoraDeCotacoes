@@ -10,9 +10,9 @@ public class BaseController : ControllerBase
 
     protected IActionResult Created<T>(string routeName, object routeValues, T data) =>
         base.CreatedAtRoute(routeName, routeValues, new ApiResponseWithData<T> { Data = data, Success = true });
-    
+
     protected IActionResult OkPaginated<T>(PaginatedList<T> pagedList) =>
-        Ok(new PaginatedListResponse<T>()
+        base.Ok(new PaginatedListResponse<T>()
         {
             Data = pagedList,
             CurrentPage = pagedList.CurrentPage,

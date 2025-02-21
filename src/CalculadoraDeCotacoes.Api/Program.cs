@@ -30,8 +30,7 @@ try
 
     builder.Services.AddControllers(options =>
     {
-        options.Filters.Add(new GlobalExceptionFilter());
-
+        options.Filters.Add<GlobalExceptionFilter>();
         options.Filters.Add<ParceiroAuthorizationFilter>();
     });
 
@@ -71,7 +70,7 @@ try
             }
         });
     });
-    
+
     builder.Services.AddHttpContextAccessor();
     builder.Services.AddApplicationLayer();
     builder.Services.AddPersistenceLayer(builder.Configuration, builder.Environment.IsDevelopment());
@@ -94,13 +93,11 @@ try
 
     app.MapControllers();
 
-// When the app runs, it first creates the Database.
-    using (var scope = app.Services.CreateScope())
-    {
-        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        context.Database.EnsureCreated();
-        DbInitializer.SeedDatabase(context);
-    }
+    // When the app runs, it first creates the Database.
+    using var scope = app.Services.CreateScope();
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    context.Database.EnsureCreated();
+    DbInitializer.SeedDatabase(context);
 
     app.Run();
 }
@@ -117,4 +114,6 @@ finally
 }
 
 
-public partial class Program { }
+public partial class Program
+{
+}

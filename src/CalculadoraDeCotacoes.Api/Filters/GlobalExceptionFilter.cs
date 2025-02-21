@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace CalculadoraDeCotacoes.Api.Filters;
 
-public class GlobalExceptionFilter : IExceptionFilter
+public class GlobalExceptionFilter: IExceptionFilter
 {
     public void OnException(ExceptionContext context)
     {

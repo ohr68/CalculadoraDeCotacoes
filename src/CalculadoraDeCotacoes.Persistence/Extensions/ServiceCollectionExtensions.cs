@@ -22,6 +22,14 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<ApplicationDbContext>(
             options =>
             {
+                if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Testing")
+                {
+                    // In-memory database for testing
+                    options.UseInMemoryDatabase("InMemoryDbForTesting");
+
+                    return;
+                }
+
                 var connectionString = configuration.GetConnectionString("CalculadoraDeCotacoes")!;
                 if (!isDevelopment)
                 {

@@ -17,12 +17,12 @@ public class Segurado
 
     public virtual Cotacao? Cotacao { get; set; }
 
-    public void CalcularValorPremio()
-        => Premio = Cotacao!.Produto!.ValorBase + Cotacao!.CotacoesCoberturas!.Sum(c => c.ValorTotal);
+    public void CalcularValorPremio(decimal valorBase, Cotacao cotacao)
+        => Premio = valorBase + cotacao.CotacoesCoberturas!.Sum(c => c.ValorTotal);
 
-    public void VerificarValorImportanciaSegurada()
+    public void VerificarValorImportanciaSegurada(decimal limite)
     {
-        if (ImportanciaSegurada > Cotacao!.Produto!.Limite)
+        if (ImportanciaSegurada > limite)
             throw new ValidationException("O valor da IS está fora do limite permitido para o produto informado.");
     }
 }

@@ -2,6 +2,6 @@
 
 public enum TipoCobertura
 {
-    Basica,
-    Adicional
+    Basica = 1,
+    Adicional = 2
 }

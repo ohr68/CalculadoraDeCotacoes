@@ -21,6 +21,7 @@ public class ExcluirCoberturaCommandHandler(
 
         var cotacao = await context.Cotacoes
             .Include(c => c.Segurado)
+            .Include(c => c.Produto)
             .SingleOrDefaultAsync(c => c.Id == request.IdCotacao, cancellationToken);
 
         if (cotacao is null)
@@ -40,10 +41,10 @@ public class ExcluirCoberturaCommandHandler(
                 $"Cobertura de id {request.IdCobertura} não encontrada na cotação de id {request.IdCotacao}.");
 
         context.CotacoesCoberturas.Remove(cotacaoCobertura);
-        
-        cotacao.Segurado!.CalcularValorPremio();
+
+        cotacao.Segurado!.CalcularValorPremio(cotacao.Produto!.ValorBase, cotacao);
         context.Entry(cotacao).State = EntityState.Modified;
-        
+
         var sucesso = await context.SaveChangesAsync(cancellationToken) > 0;
 
         return new ExcluirCoberturaResult(sucesso);

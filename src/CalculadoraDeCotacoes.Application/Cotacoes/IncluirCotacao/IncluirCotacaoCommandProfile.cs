@@ -10,7 +10,7 @@ public class IncluirCotacaoCommandProfile : IRegister
         config.NewConfig<IncluirCotacaoCommand, Cotacao>()
             .Map(dest => dest.Segurado, src => new
             {
-                src.NomeSegurado, src.Ddd, src.Telefone, src.Endereco, src.Cep, src.Documento,
+                Nome = src.NomeSegurado, src.Ddd, src.Telefone, src.Endereco, src.Cep, src.Documento,
                 src.ImportanciaSegurada, src.DataNascimento
             })
             .Map(dest => dest.CotacoesBeneficiarios, src => src.Beneficiarios!.OrderBy(cb => cb.IdParentesco))
