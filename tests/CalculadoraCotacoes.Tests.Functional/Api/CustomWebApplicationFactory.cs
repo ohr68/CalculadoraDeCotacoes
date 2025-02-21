@@ -29,6 +29,14 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             {
                 options.UseInMemoryDatabase("InMemoryDbForTesting");
             });
+            
+            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Testing");
+            
+            using var scope = services.BuildServiceProvider().CreateScope();
+            var scopedServices = scope.ServiceProvider;
+            var db = scopedServices.GetRequiredService<ApplicationDbContext>();
+            db.Database.EnsureCreated();
+            DbInitializer.SeedDatabase(db);
         });
     }
 }

@@ -70,7 +70,7 @@ try
             }
         });
     });
-    
+
     builder.Services.AddHttpContextAccessor();
     builder.Services.AddApplicationLayer();
     builder.Services.AddPersistenceLayer(builder.Configuration, builder.Environment.IsDevelopment());
@@ -93,9 +93,10 @@ try
 
     app.MapControllers();
 
-// When the app runs, it first creates the Database.
-    using (var scope = app.Services.CreateScope())
+    if (!app.Environment.EnvironmentName.Equals("Testing"))
     {
+        // When the app runs, it first creates the Database.
+        using var scope = app.Services.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         context.Database.EnsureCreated();
         DbInitializer.SeedDatabase(context);
@@ -116,4 +117,6 @@ finally
 }
 
 
-public partial class Program { }
+public partial class Program
+{
+}
