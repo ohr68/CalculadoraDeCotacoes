@@ -29,5 +29,5 @@ jobs:
 
     - name: 🚀 Run Functional Tests
       env:
-        DOTNET_ENVIRONMENT: Testing  # Ensures it runs in "Testing" mode
+        ASPNETCORE_ENVIRONMENT: Testing  # Ensures it runs in "Testing" mode
       run: dotnet test CalculadoraDeCotacoes.sln --no-restore --configuration Release --logger "console;verbosity=detailed"
