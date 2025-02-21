@@ -13,22 +13,30 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        builder.ConfigureLogging(logging =>
+        try
         {
-            logging.ClearProviders();
-            logging.AddConsole();
-        });
-
-        builder.ConfigureServices(services =>
-        {
-            var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(ApplicationDbContext));
-            if (descriptor != null)
-                services.Remove(descriptor);
-
-            services.AddDbContext<ApplicationDbContext>(options =>
+            builder.ConfigureLogging(logging =>
             {
-                options.UseInMemoryDatabase("InMemoryDbForTesting");
+                logging.ClearProviders();
+                logging.AddConsole();
             });
-        });
+
+            builder.ConfigureServices(services =>
+            {
+                var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(ApplicationDbContext));
+                if (descriptor != null)
+                    services.Remove(descriptor);
+
+                services.AddDbContext<ApplicationDbContext>(options =>
+                {
+                    options.UseInMemoryDatabase("InMemoryDbForTesting");
+                });
+            });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error during server configuration: {ex.Message}");
+            throw;
+        }
     }
 }
