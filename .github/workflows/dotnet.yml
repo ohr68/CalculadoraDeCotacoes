@@ -7,25 +7,27 @@ on:
   pull_request:
     branches:
       - '*'
-      
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
 
-    - name: Setup .NET Core
+    - name: 🏗️ Setup .NET Core
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0'
 
-    - name: Restore dependencies
+    - name: 📦 Restore dependencies
       run: dotnet restore CalculadoraDeCotacoes.sln
 
-    - name: Build
+    - name: 🔨 Build Solution
       run: dotnet build CalculadoraDeCotacoes.sln --no-restore --configuration Release
 
-    - name: Run tests
-      run: dotnet test CalculadoraDeCotacoes.sln --no-restore --verbosity normal --configuration Release
+    - name: 🚀 Run Functional Tests
+      env:
+        DOTNET_ENVIRONMENT: Testing  # Ensures it runs in "Testing" mode
+      run: dotnet test CalculadoraDeCotacoes.sln --no-restore --configuration Release --logger "console;verbosity=detailed"
