@@ -54,6 +54,9 @@ public class CotacoesControllerTests : IClassFixture<CustomWebApplicationFactory
         
         // Assert
         response.StatusCode.Should().Be(HttpStatusCode.Created);
+        
+        var content = await response.Content.ReadAsStringAsync();
+        content.Should().NotBeNullOrEmpty();
     }
 
     [Fact(DisplayName = "Listar cotações com sucesso.")]
