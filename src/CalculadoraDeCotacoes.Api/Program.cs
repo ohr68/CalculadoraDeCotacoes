@@ -93,14 +93,11 @@ try
 
     app.MapControllers();
 
-    if (!app.Environment.EnvironmentName.Equals("Testing"))
-    {
-        // When the app runs, it first creates the Database.
-        using var scope = app.Services.CreateScope();
-        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        context.Database.EnsureCreated();
-        DbInitializer.SeedDatabase(context);
-    }
+    // When the app runs, it first creates the Database.
+    using var scope = app.Services.CreateScope();
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    context.Database.EnsureCreated();
+    DbInitializer.SeedDatabase(context);
 
     app.Run();
 }
