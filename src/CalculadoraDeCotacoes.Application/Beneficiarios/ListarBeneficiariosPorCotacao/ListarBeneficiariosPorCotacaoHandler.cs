@@ -37,8 +37,8 @@ public class ListarBeneficiariosPorCotacaoHandler(
         if (beneficiarios is null || beneficiarios.Count <= 0)
             throw new NotFoundException($"Nenhum beneficiario encontrado para a cotação de id {request.IdCotacao}.");
 
-        return await PaginatedList<ListarBeneficiariosPorCotacaoResult>.CreateAsync(
-            beneficiarios.Adapt<IQueryable<ListarBeneficiariosPorCotacaoResult>>(), request.Pagina,
+        return PaginatedList<ListarBeneficiariosPorCotacaoResult>.Create(
+            beneficiarios.Adapt<IEnumerable<ListarBeneficiariosPorCotacaoResult>>(), request.Pagina,
             request.RegistrosPorPagina, cancellationToken);
     }
 }

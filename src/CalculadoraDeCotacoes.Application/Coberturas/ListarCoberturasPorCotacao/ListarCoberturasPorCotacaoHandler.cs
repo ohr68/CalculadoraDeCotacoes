@@ -34,8 +34,8 @@ public class ListarCoberturasPorCotacaoHandler(
         if (coberturas.Count == 0)
             throw new NotFoundException($"Nenhuma cobertura encontrada para a cotação de id {request.IdCotacao}.");
 
-        return await PaginatedList<ListarCoberturasPorCotacaoResult>.CreateAsync(
-            coberturas.Adapt<IQueryable<ListarCoberturasPorCotacaoResult>>(), request.Pagina,
+        return PaginatedList<ListarCoberturasPorCotacaoResult>.Create(
+            coberturas.Adapt<IEnumerable<ListarCoberturasPorCotacaoResult>>(), request.Pagina,
             request.RegistrosPorPagina, cancellationToken);
     }
 }

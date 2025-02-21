@@ -26,6 +26,7 @@ public class IncluirCoberturaCommandHandler(
         var cotacao = await context.Cotacoes
             .Include(c => c.CotacoesCoberturas)
             .Include(c => c.Segurado)
+            .Include(c => c.Produto)
             .SingleOrDefaultAsync(c => c.Id == request.IdCotacao, cancellationToken);
 
         if (cotacao is null)
@@ -57,7 +58,7 @@ public class IncluirCoberturaCommandHandler(
                 cobertura!.Valor - coberturaCotacao.ValorDesconto + coberturaCotacao.ValorAgravo;
         }
 
-        cotacao.Segurado.CalcularValorPremio();
+        cotacao.Segurado.CalcularValorPremio(cotacao.Produto!.ValorBase, cotacao);
 
         context.Entry(cotacao).State = EntityState.Modified;
 

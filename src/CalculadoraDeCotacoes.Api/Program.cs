@@ -30,8 +30,7 @@ try
 
     builder.Services.AddControllers(options =>
     {
-        options.Filters.Add(new GlobalExceptionFilter());
-
+        options.Filters.Add<GlobalExceptionFilter>();
         options.Filters.Add<ParceiroAuthorizationFilter>();
     });
 

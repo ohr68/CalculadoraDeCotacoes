@@ -57,7 +57,7 @@ public class IncluirCotacaoCommandHandler(
 
         foreach (var coberturaCotacao in cotacao.CotacoesCoberturas!)
         {
-            if ((Domain.Enums.TipoCobertura)coberturaCotacao.Cobertura!.TipoCoberturaId !=
+            if ((Domain.Enums.TipoCobertura)coberturaCotacao.IdCobertura !=
                 Domain.Enums.TipoCobertura.Basica) continue;
 
             var cobertura = await context.Coberturas.SingleOrDefaultAsync(c => c.Id == coberturaCotacao.IdCobertura,
@@ -78,8 +78,13 @@ public class IncluirCotacaoCommandHandler(
                 cobertura!.Valor - coberturaCotacao.ValorDesconto + coberturaCotacao.ValorAgravo;
         }
 
-        cotacao.Segurado!.VerificarValorImportanciaSegurada();
-        cotacao.Segurado!.CalcularValorPremio();
+        var produto = await context.Produtos.SingleOrDefaultAsync(p => p.Id == request.IdProduto, cancellationToken);
+
+        if (produto is null)
+            throw new NotFoundException($"Produto de id {request.IdProduto} não encontrado.");
+        
+        cotacao.Segurado!.VerificarValorImportanciaSegurada(produto.Limite);
+        cotacao.Segurado!.CalcularValorPremio(produto.ValorBase, cotacao);
 
         var idParceiro = await authService.ObterIdParceiro(cancellationToken);
         cotacao.IdParceiro = idParceiro;
