@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CalculadoraDeCotacoes.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85042e3e3a8fe72fe13572cd2e3a331647d3ec30")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65476ded614128165476578691a5f20a8f044104")]
 [assembly: System.Reflection.AssemblyProductAttribute("CalculadoraDeCotacoes.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CalculadoraDeCotacoes.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
